@@ -3,6 +3,9 @@ import '../index.css'
 import * as THREE from 'three';
 
 export function callThreeJS() {
+
+  let fixedHeader = document.querySelector('#header');
+  let fixedCanvas = document.querySelector('#three-canvas');
 // SMOOTHNESS
 
 let scrollbar = new Scrollbar.init(document.body, {
@@ -16,8 +19,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight, false);
-document.body.appendChild( renderer.domElement );
+renderer.setSize( window.innerWidth, window.innerHeight-16, false);
+document.querySelector('#three-canvas').appendChild( renderer.domElement );
 
 let array = new Array(35).fill(null)
 
@@ -127,12 +130,17 @@ function squareChecker(zCamera) {
 
 
   // scrollPercent updater based on scrolling
-  scrollbar.addListener(() => {
+  scrollbar.addListener((status) => {
+    // scroll calculation
     scrollPercent =
         ((scrollbar.offset.y) /
             (scrollbar.size.content.height -
                 document.documentElement.clientHeight)) * 100;
     console.log(scrollPercent);
+    // smooth-scrollbar fixings
+    const offset = status.offset;
+    fixedHeader.style.top = offset.y + 'px';
+    fixedCanvas.style.top = offset.y + 'px';
 })
 
 // Resizing 
