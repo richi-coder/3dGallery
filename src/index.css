@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  padding: 0;
+  margin: 0;
+  width: 10;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  height: 2000px;
+  width: 100%;
+  background-color: #535bf2;
+}

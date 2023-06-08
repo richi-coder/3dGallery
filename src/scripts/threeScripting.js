@@ -1,8 +1,8 @@
 import Scrollbar from 'smooth-scrollbar';
-import './style.css'
+import '../index.css'
 import * as THREE from 'three';
-// import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
+export function callThreeJS() {
 // SMOOTHNESS
 
 let scrollbar = new Scrollbar.init(document.body, {
@@ -35,13 +35,11 @@ const plane = new THREE.Mesh(
                           )
 const rightPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial( {
-                            map: loader.load('richicoder_logo.png'),
-                          } )
+                          new THREE.MeshBasicMaterial({ color: 0x222222, wireframe: true })
                           )
 const leftPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial( { color: 0x222222, wireframe: true } )
+                          new THREE.MeshBasicMaterial({ color: 0x222222, wireframe: true })
                           )
 const topPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
@@ -148,4 +146,7 @@ function onWindowResize() {
 
 function render() {
   renderer.render( scene, camera );
+}
+
+
 }
