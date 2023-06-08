@@ -24,7 +24,6 @@ document.querySelector('#three-canvas').appendChild( renderer.domElement );
 
 let array = new Array(35).fill(null)
 
-
 // New object
 
 // *********** ROOM
