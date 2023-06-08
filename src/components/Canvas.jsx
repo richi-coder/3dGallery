@@ -1,11 +1,12 @@
 import { useEffect } from "react"
 import { callThreeJS } from "../scripts/threeScripting"
+import { UseAppContext } from "../context/AppContext"
 
 function Canvas() {
-
+  const useAppContext = UseAppContext()
     useEffect(() => {
-        callThreeJS()
-    }, [])
+        callThreeJS(useAppContext)
+    }, [useAppContext.state])
     
 
   return (

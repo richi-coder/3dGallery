@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext, useState } from "react"
 
 const ContextApp = createContext();
 
@@ -7,8 +7,19 @@ export const UseAppContext = () => {
 }
 
 function AppContext({ children }) {
+  const [state, setState] = useState(false)
+
+  const updateState = (value) => {
+    setState(value)
+  }
+
+  const process = {
+    state,
+    updateState
+  }
+
   return (
-    <ContextApp.Provider value={''}>
+    <ContextApp.Provider value={process}>
         {children}
     </ContextApp.Provider>
   )

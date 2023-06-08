@@ -1,11 +1,13 @@
 import Scrollbar from 'smooth-scrollbar';
 import '../index.css'
 import * as THREE from 'three';
+import { InteractionManager } from 'three.interactive';
 
-export function callThreeJS() {
+export function callThreeJS(useAppContext) {
 
   let fixedHeader = document.querySelector('#header');
   let fixedCanvas = document.querySelector('#three-canvas');
+  let fixedLayer = document.querySelector('#layer');
 // SMOOTHNESS
 
 let scrollbar = new Scrollbar.init(document.body, {
@@ -22,6 +24,8 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight-16, false);
 document.querySelector('#three-canvas').appendChild( renderer.domElement );
 
+
+
 let array = new Array(35).fill(null)
 
 // New object
@@ -29,31 +33,39 @@ let array = new Array(35).fill(null)
 // *********** ROOM
 
 // Textures 
+const gridColor = 'rgb(255,174,66)';
+const groundColor = 'rgb(30,30,30';
 const loader = new THREE.TextureLoader();
 
 const plane = new THREE.Mesh(
                           new THREE.PlaneGeometry(5,5,5,5),
-                          new THREE.MeshBasicMaterial(  { color: 0x222222, wireframe: true } )
+                          new THREE.MeshBasicMaterial(  { color: gridColor, wireframe: true } )
                           )
 const rightPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial({ color: 0x222222, wireframe: true })
+                          new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const leftPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial({ color: 0x222222, wireframe: true })
+                          new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const topPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial( { color: 0x222222, wireframe: true } )
+                          new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 const bottomPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial( { color: 0x222222, wireframe: true } )
+                          new THREE.MeshBasicMaterial( { color: groundColor, wireframe: true } )
                           )
 
 scene.add( plane, rightPlane, leftPlane, topPlane, bottomPlane );
 
+// ** Three Interactive
+const interactionManager = new InteractionManager(
+  renderer,
+  camera,
+  renderer.domElement
+);
 
 
 // ******* SQUARES
@@ -76,6 +88,8 @@ array.forEach((item, indexPosition) => {
   square.position.set( xPosition, yPosition, zPosition )
   squares.push({ ...square, ...{ initX: square.position.x, initY: square.position.y}});
   scene.add( square )
+  interactionManager.add(square)
+  square.addEventListener('click', () => useAppContext.updateState(true))
 })
 
 // Camera Position
@@ -102,6 +116,7 @@ function animate() {
 	requestAnimationFrame( animate );
   playScrollAnimation()
   render()
+  interactionManager.update();
 }
 animate();
 
@@ -136,10 +151,12 @@ function squareChecker(zCamera) {
             (scrollbar.size.content.height -
                 document.documentElement.clientHeight)) * 100;
     console.log(scrollPercent);
+    
     // smooth-scrollbar fixings
     const offset = status.offset;
     fixedHeader.style.top = offset.y + 'px';
     fixedCanvas.style.top = offset.y + 'px';
+    fixedLayer.style.top = offset.y + 'px';
 })
 
 // Resizing 
