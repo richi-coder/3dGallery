@@ -3,10 +3,16 @@ import { callThreeJS } from "../scripts/threeScripting"
 import { UseAppContext } from "../context/AppContext"
 
 function Canvas() {
-  const useAppContext = UseAppContext()
+  const useAppContext = UseAppContext();
+  const howMany = useAppContext.state.squaresQty;
     useEffect(() => {
-        callThreeJS(useAppContext)
-    }, [])
+      // Image loading
+        // useAppContext.updateSquaresQty(howMany)
+        // setTimeout(() => {
+        if (howMany != 0) callThreeJS(useAppContext, howMany)
+        // }, 2000);
+        console.log(howMany, 'ver');
+    }, [useAppContext.state.squaresQty])
     
 
   return (

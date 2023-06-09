@@ -3,7 +3,7 @@ import '../index.css'
 import * as THREE from 'three';
 import { InteractionManager } from 'three.interactive';
 
-export function callThreeJS(useAppContext) {
+export function callThreeJS(useAppContext, howMany) {
 
   let fixedHeader = document.querySelector('#header');
   let fixedCanvas = document.querySelector('#three-canvas');
@@ -26,9 +26,9 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight, false);
 document.querySelector('#three-canvas').appendChild( renderer.domElement );
 
+let howLong = howMany*2;
 
-
-let array = new Array(35).fill(null)
+let array = new Array(howMany).fill(null)
 
 // New object
 
@@ -44,19 +44,19 @@ const plane = new THREE.Mesh(
                           new THREE.MeshBasicMaterial(  { color: gridColor, wireframe: true } )
                           )
 const rightPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(35,5,35,5),
+                          new THREE.PlaneGeometry(howLong,5,howLong,5),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const leftPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(35,5,35,5),
+                          new THREE.PlaneGeometry(howLong,5,howLong,5),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const topPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(35,5,35,5),
+                          new THREE.PlaneGeometry(howLong,5,howLong,5),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 const bottomPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(35,5,35,5),
+                          new THREE.PlaneGeometry(howLong,5,howLong,5),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 
@@ -107,7 +107,7 @@ array.forEach((item, indexPosition) => {
 camera.position.set(0,0,0);
 camera.lookAt(plane.position);
 // First plane position
-plane.position.set(0,0,-17.5)
+plane.position.set(0,0,-howLong/2)
 // Right plane position
 rightPlane.position.set(2.5,0,0)
 rightPlane.rotation.y = -90*(2*3.14/360)
@@ -136,7 +136,7 @@ animate();
 
 function playScrollAnimation() {
   camera.lookAt(plane.position)
-  camera.position.z = -scrollPercent/10
+  camera.position.z = -scrollPercent/howLong
   zCamera = camera.position.z;
   squareChecker(zCamera)
 }

@@ -11,11 +11,13 @@ function AppContext({ children }) {
     layer: false,
     menu: false,
     connectWallet: false,
+    squaresQty: 0,
+    data: false
   })
 
   const updateState = (key, value) => {
-    console.log(key, value, 'verr aqui');
     setState({
+      ...state,
       layer: false,
       menu: false,
       connectWallet: false,
@@ -23,9 +25,17 @@ function AppContext({ children }) {
     })
   }
 
+  const updateSquaresQty = (squaresQty) => {
+    setState({
+      ...state,
+      squaresQty
+    })
+  }
+
   const process = {
     state,
-    updateState
+    updateState,
+    updateSquaresQty
   }
 
   return (
