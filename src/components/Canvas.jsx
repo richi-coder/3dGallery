@@ -6,7 +6,7 @@ function Canvas() {
   const useAppContext = UseAppContext()
     useEffect(() => {
         callThreeJS(useAppContext)
-    }, [useAppContext.state])
+    }, [useAppContext.state.layer, useAppContext.state.scrolling])
     
 
   return (

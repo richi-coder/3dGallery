@@ -16,6 +16,8 @@ let scrollbar = new Scrollbar.init(document.body, {
 
 let scrollPercent = 0;
 let zCamera;
+let scrolling = false;
+let savedScroll = 0;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -34,7 +36,7 @@ let array = new Array(35).fill(null)
 
 // Textures 
 const gridColor = 'rgb(255,174,66)';
-const groundColor = 'rgb(30,30,30';
+const groundColor = 'rgb(30,30,30)';
 const loader = new THREE.TextureLoader();
 
 const plane = new THREE.Mesh(
@@ -59,6 +61,7 @@ const bottomPlane = new THREE.Mesh(
                           )
 
 scene.add( plane, rightPlane, leftPlane, topPlane, bottomPlane );
+
 
 // ** Three Interactive
 const interactionManager = new InteractionManager(
@@ -89,7 +92,7 @@ array.forEach((item, indexPosition) => {
   squares.push({ ...square, ...{ initX: square.position.x, initY: square.position.y}});
   scene.add( square )
   interactionManager.add(square)
-  square.addEventListener('click', () => useAppContext.updateState(true))
+  square.addEventListener('click', () => useAppContext.updateState('layer', true))
 })
 
 // Camera Position
@@ -112,10 +115,12 @@ bottomPlane.position.set(0,-2.5,0)
 bottomPlane.rotation.x = 90*(2*3.14/360)
 bottomPlane.rotation.z = 90*(2*3.14/360)
 
+// Animate function
+render()
 function animate() {
 	requestAnimationFrame( animate );
   playScrollAnimation()
-  render()
+  if (scrolling) render()
   interactionManager.update();
 }
 animate();
@@ -145,18 +150,30 @@ function squareChecker(zCamera) {
 
   // scrollPercent updater based on scrolling
   scrollbar.addListener((status) => {
+    // Indicate it is scrolling so render can Execute
+    scrolling = true
     // scroll calculation
     scrollPercent =
         ((scrollbar.offset.y) /
             (scrollbar.size.content.height -
                 document.documentElement.clientHeight)) * 100;
     console.log(scrollPercent);
-    
+    // Checking stopped scroll
+    if (Math.abs(scrollPercent.toFixed(4) - savedScroll.toFixed(4)) <= 0.005) {
+      scrolling = false;
+      console.log('pause', scrollPercent.toFixed(4), savedScroll.toFixed(4));
+    }
+    if (scrollPercent == 0) scrolling = false
+
     // smooth-scrollbar fixings
     const offset = status.offset;
     fixedHeader.style.top = offset.y + 'px';
     fixedCanvas.style.top = offset.y + 'px';
-    fixedLayer.style.top = offset.y + 'px';
+    if (fixedLayer) {
+      fixedLayer.style.top = offset.y + 'px';
+    }
+
+    savedScroll = scrollPercent;
 })
 
 // Resizing 

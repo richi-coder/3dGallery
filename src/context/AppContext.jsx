@@ -7,10 +7,17 @@ export const UseAppContext = () => {
 }
 
 function AppContext({ children }) {
-  const [state, setState] = useState(false)
+  const [state, setState] = useState({
+    layer: false,
+    scrolling: false
+  })
 
-  const updateState = (value) => {
-    setState(value)
+  const updateState = (key, value) => {
+    console.log(key, value, 'verr aqui');
+    setState({
+      ...state,
+      [key]: value
+    })
   }
 
   const process = {
