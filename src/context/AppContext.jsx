@@ -16,7 +16,9 @@ function AppContext({ children }) {
   const updateState = (key, value) => {
     console.log(key, value, 'verr aqui');
     setState({
-      ...state,
+      layer: false,
+      menu: false,
+      connectWallet: false,
       [key]: value
     })
   }
