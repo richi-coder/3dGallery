@@ -13,6 +13,7 @@ export function callThreeJS(useAppContext, howMany) {
 let scrollbar = new Scrollbar.init(document.body, {
   renderByPixels: true
 })
+scrollbar.limit.x = 0;
 
 let scrollPercent = 0;
 let zCamera;
@@ -165,7 +166,7 @@ function squareChecker(zCamera) {
                 document.documentElement.clientHeight)) * 100;
     console.log(scrollPercent);
     // Checking stopped scroll
-    if (Math.abs(scrollPercent.toFixed(4) - savedScroll.toFixed(4)) <= 0.005) {
+    if (Math.abs(scrollPercent.toFixed(4) - savedScroll.toFixed(4)) <= 0.01) {
       scrolling = false;
       console.log('pause', scrollPercent.toFixed(4), savedScroll.toFixed(4));
     }

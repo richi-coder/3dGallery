@@ -35,7 +35,7 @@ function Layer() {
   return (
             <div id="layer" className={`fixed top-0 mt-[50px] left-0 w-screen h-[95vh] text-white ${layerClass}`}>
                 <div className={`w-full h-full bg-black text-white transition-transform duration-500 ${innerLayer} flex flex-row-reverse flex-wrap relative`}>
-                    <div className="w-full md:w-2/3 bg-gray-500 py-2 text-white text-md absolute top-0 left-0">
+                    <div className="w-full md:w-2/3 bg-white py-2 text-gray-700 text-md absolute top-0 left-0">
                                 <button
                                     className="float-left ms-5"
                                     onClick={closeButton}
