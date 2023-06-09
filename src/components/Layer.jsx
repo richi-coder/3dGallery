@@ -8,6 +8,8 @@ function Layer() {
     const useAppContext = UseAppContext();
     const [layerClass, setLayerClass] = useState('-z-[60] hidden')
     const [innerLayer, setInnerLayer] = useState('-translate-x-full')
+    const data = useAppContext.state.data;
+    const index = useAppContext.state.currentSquare;
 
     useEffect(() => {
         if (useAppContext.state.layer) {
@@ -51,14 +53,21 @@ function Layer() {
                 <div id="square-picture" className="w-full md:w-1/3 bg-purple-500">
 
                 </div>
-                    <div id="square-info" className="flex flex-col w-full md:w-2/3 bg-black">
+                    <div id="square-info" className="flex flex-col w-full md:w-2/3 bg-black text-white text-3xl pt-20 md:pt-24">
                         
                        
                         <div>
                             INFORMATION
                             ON 
                             THE 
-                            PHOTO !
+                            PHOTO !\
+                            <br />
+                            <br />
+                            {
+                                data.length > 0 ? 
+                                data[index].description :
+                                null
+                            }
                         </div>
                     </div>
                     

@@ -18,7 +18,8 @@ function AppContext({ children }) {
     layer: false,
     menu: false,
     connectWallet: false,
-    data: []
+    data: [],
+    currentSquare: 0
   })
 
   useEffect(() => {
@@ -42,17 +43,24 @@ function AppContext({ children }) {
     })
   }
 
-  const updateSquaresQty = (squaresQty) => {
+  const updateKeys = (keys) => {
     setState({
       ...state,
-      squaresQty
+      ...keys
     })
   }
+
+  // const updateSquaresQty = (squaresQty) => {
+  //   setState({
+  //     ...state,
+  //     squaresQty
+  //   })
+  // }
 
   const process = {
     state,
     updateState,
-    updateSquaresQty
+    updateKeys
   }
 
   return (

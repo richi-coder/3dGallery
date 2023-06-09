@@ -91,8 +91,12 @@ array.forEach((item, indexPosition) => {
   squares.push({ ...square, ...{ initX: square.position.x, initY: square.position.y}});
   scene.add( square )
   interactionManager.add(square)
-  square.addEventListener('click', () => {
-    useAppContext.updateState('layer', true)
+  square.addEventListener('click', (e) => {
+    e.stopPropagation()
+    useAppContext.updateKeys({
+      'layer': true,
+      'currentSquare': indexPosition
+    })
   })
   square.addEventListener('mouseover', () => {
     document.body.style.cursor = 'pointer';
