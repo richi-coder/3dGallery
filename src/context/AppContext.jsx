@@ -9,7 +9,8 @@ export const UseAppContext = () => {
 function AppContext({ children }) {
   const [state, setState] = useState({
     layer: false,
-    scrolling: false
+    menu: false,
+    connectWallet: false,
   })
 
   const updateState = (key, value) => {

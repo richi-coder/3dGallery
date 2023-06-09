@@ -10,7 +10,7 @@ function Canvas() {
     
 
   return (
-    <div id="three-canvas" className="mt-[50px] w-fit h-fit fixed top-0 left-0"></div>
+    <div id="three-canvas" className="w-fit h-fit fixed top-0 left-0"></div>
   )
 }
 

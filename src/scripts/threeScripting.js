@@ -23,7 +23,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight-16, false);
+renderer.setSize( window.innerWidth, window.innerHeight, false);
 document.querySelector('#three-canvas').appendChild( renderer.domElement );
 
 
@@ -57,7 +57,7 @@ const topPlane = new THREE.Mesh(
                           )
 const bottomPlane = new THREE.Mesh(
                           new THREE.PlaneGeometry(35,5,35,5),
-                          new THREE.MeshBasicMaterial( { color: groundColor, wireframe: true } )
+                          new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 
 scene.add( plane, rightPlane, leftPlane, topPlane, bottomPlane );

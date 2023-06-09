@@ -11,9 +11,14 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fontawesome": "^1.7.1",
     "smooth-scrollbar": "^8.8.4",
     "three": "^0.153.0",
     "three.interactive": "^1.7.0"
