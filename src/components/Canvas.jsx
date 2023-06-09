@@ -4,15 +4,10 @@ import { UseAppContext } from "../context/AppContext"
 
 function Canvas() {
   const useAppContext = UseAppContext();
-  const howMany = useAppContext.state.squaresQty;
+  const howMany = useAppContext.state.data.length;
     useEffect(() => {
-      // Image loading
-        // useAppContext.updateSquaresQty(howMany)
-        // setTimeout(() => {
         if (howMany != 0) callThreeJS(useAppContext, howMany)
-        // }, 2000);
-        console.log(howMany, 'ver');
-    }, [useAppContext.state.squaresQty])
+    }, [useAppContext.state.data])
     
 
   return (

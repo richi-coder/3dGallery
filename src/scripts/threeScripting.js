@@ -26,9 +26,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight, false);
 document.querySelector('#three-canvas').appendChild( renderer.domElement );
 
-let howLong = howMany*2;
-
-let array = new Array(howMany).fill(null)
+let array = useAppContext.state.data;
 
 // New object
 
@@ -44,19 +42,19 @@ const plane = new THREE.Mesh(
                           new THREE.MeshBasicMaterial(  { color: gridColor, wireframe: true } )
                           )
 const rightPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howLong,5,howLong,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany,5),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const leftPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howLong,5,howLong,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany,5),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const topPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howLong,5,howLong,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany,5),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 const bottomPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howLong,5,howLong,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany,5),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 
@@ -78,7 +76,7 @@ array.forEach((item, indexPosition) => {
   let square = new THREE.Mesh(
     new THREE.PlaneGeometry(1,1,1,1),
     new THREE.MeshBasicMaterial(  {
-      map: loader.load('https://richicoder.com/richicoder_profile_photo.png'),
+      map: loader.load(item.urls.regular),
     }  )
     )
   let xRandom = Math.round(Math.random())
@@ -107,7 +105,7 @@ array.forEach((item, indexPosition) => {
 camera.position.set(0,0,0);
 camera.lookAt(plane.position);
 // First plane position
-plane.position.set(0,0,-howLong/2)
+plane.position.set(0,0,-howMany/2)
 // Right plane position
 rightPlane.position.set(2.5,0,0)
 rightPlane.rotation.y = -90*(2*3.14/360)
@@ -136,7 +134,7 @@ animate();
 
 function playScrollAnimation() {
   camera.lookAt(plane.position)
-  camera.position.z = -scrollPercent/howLong
+  camera.position.z = -scrollPercent/howMany
   zCamera = camera.position.z;
   squareChecker(zCamera)
 }

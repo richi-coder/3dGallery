@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
+import { fetchData } from "../scripts/fetchData";
 
 const ContextApp = createContext();
 
@@ -6,14 +7,30 @@ export const UseAppContext = () => {
     return useContext(ContextApp);
 }
 
+const fillData = async() => {
+  const results = await fetchData()
+  return results
+}
+
+
 function AppContext({ children }) {
   const [state, setState] = useState({
     layer: false,
     menu: false,
     connectWallet: false,
-    squaresQty: 0,
-    data: false
+    data: []
   })
+
+  useEffect(() => {
+    fillData().then(results => {
+      setState({
+        ...state,
+        data: results
+      })
+    })
+    
+  }, [])
+  
 
   const updateState = (key, value) => {
     setState({
