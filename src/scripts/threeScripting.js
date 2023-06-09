@@ -164,11 +164,11 @@ function squareChecker(zCamera) {
         ((scrollbar.offset.y) /
             (scrollbar.size.content.height -
                 document.documentElement.clientHeight)) * 100;
-    console.log(scrollPercent);
+    // console.log(scrollPercent);
     // Checking stopped scroll
     if (Math.abs(scrollPercent.toFixed(4) - savedScroll.toFixed(4)) <= 0.01) {
       scrolling = false;
-      console.log('pause', scrollPercent.toFixed(4), savedScroll.toFixed(4));
+      // console.log('pause', scrollPercent.toFixed(4), savedScroll.toFixed(4));
     }
     if (scrollPercent == 0) scrolling = false
     if (scrollPercent == 100) scrolling = false
@@ -177,9 +177,7 @@ function squareChecker(zCamera) {
     const offset = status.offset;
     fixedHeader.style.top = offset.y + 'px';
     fixedCanvas.style.top = offset.y + 'px';
-    // if (fixedLayer !== undefined) {
-      fixedLayer.style.top = offset.y + 'px';
-    // }
+    fixedLayer.style.top = offset.y + 'px';
 
     savedScroll = scrollPercent;
 })
