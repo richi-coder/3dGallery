@@ -92,7 +92,15 @@ array.forEach((item, indexPosition) => {
   squares.push({ ...square, ...{ initX: square.position.x, initY: square.position.y}});
   scene.add( square )
   interactionManager.add(square)
-  square.addEventListener('click', () => useAppContext.updateState('layer', true))
+  square.addEventListener('click', () => {
+    useAppContext.updateState('layer', true)
+  })
+  square.addEventListener('mouseover', () => {
+    document.body.style.cursor = 'pointer';
+  })
+  square.addEventListener('mouseout', () => {
+    document.body.style.cursor = 'default';
+  })
 })
 
 // Camera Position
@@ -164,14 +172,15 @@ function squareChecker(zCamera) {
       console.log('pause', scrollPercent.toFixed(4), savedScroll.toFixed(4));
     }
     if (scrollPercent == 0) scrolling = false
+    if (scrollPercent == 100) scrolling = false
 
     // smooth-scrollbar fixings
     const offset = status.offset;
     fixedHeader.style.top = offset.y + 'px';
     fixedCanvas.style.top = offset.y + 'px';
-    if (fixedLayer) {
+    // if (fixedLayer !== undefined) {
       fixedLayer.style.top = offset.y + 'px';
-    }
+    // }
 
     savedScroll = scrollPercent;
 })
