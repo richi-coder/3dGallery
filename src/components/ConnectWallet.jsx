@@ -11,7 +11,7 @@ function ConnectWallet() {
     }
  
   return (
-    <div className={`w-2/3 h-[60vh] md:w-96 md:h-96 bg-black text-white fixed top-32 left-[100vw] md:top-32 md:left-[100vw] transition-transform duration-1000 ${menuPosition} flex flex-col items-start gap-y-7 px-10 py-10 rounded-2xl border-yellow-500 border`}>
+    <div className={`w-2/3 h-fit md:w-96 md:h-96 bg-black text-white fixed top-32 left-[100vw] md:top-32 md:left-[100vw] transition-transform duration-1000 ${menuPosition} flex flex-col items-start gap-y-7 px-10 py-10 rounded-2xl border-yellow-500 border`}>
             <h3 className="font-bold">CONNECT YOUR WALLET</h3>
             <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ad mollitia asperiores inventore dolore id adipisci consectetur, dignissimos suscipit cumque, quibusdam illo quis et nihil provident minus fugit, placeat nam!</p>
             <button
