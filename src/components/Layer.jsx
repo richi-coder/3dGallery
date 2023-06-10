@@ -38,7 +38,7 @@ function Layer() {
 
   return (
             <div id="layer" className={`fixed top-0 mt-[50px] left-0 w-screen h-[95vh] text-white ${layerClass}`}>
-                <div className={`w-full h-full bg-black text-white transition-transform duration-500 ${innerLayer} flex flex-row-reverse flex-wrap relative`}>
+                <div className={`w-full h-full bg-white text-white transition-transform duration-500 ${innerLayer} flex flex-row-reverse flex-wrap relative`}>
                     <div className="w-full md:w-2/3 bg-white py-2 text-gray-700 text-md absolute top-0 left-0">
                                 <button
                                     className="float-left ms-5"
@@ -55,7 +55,7 @@ function Layer() {
                 <div id="square-picture" className="w-full md:w-1/3 h-1/3 md:h-full bg-purple-500">
 
                 </div>
-                    <div id="square-info" className="flex flex-col w-full md:w-2/3 h-1/3 md:h-full bg-black text-white text-3xl pt-20 md:pt-24">
+                    <div id="square-info" className="flex flex-col w-full md:w-2/3 h-1/3 md:h-full bg-white text-black text-3xl pt-20 md:pt-24">
                         <Routes>
                             <Route path="*" element={<SquareInfo />} />
                         </Routes>
