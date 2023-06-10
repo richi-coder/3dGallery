@@ -31,6 +31,11 @@ function SquareInfo() {
             data.length < 1 ? 
             null :
             squareToShow ?
+            <>
+            <div id="square-picture" className="w-full md:w-1/2 h-1/3 md:h-full bg-black">
+                <img src={squareToShow.urls.regular} alt={squareToShow.description} />
+            </div>
+            <div id="square-info" className="flex flex-col w-full md:w-1/2 h-2/3 md:h-full bg-white text-black text-3xl pt-10 md:pt-24">
             <div className="flex flex-col items-start px-10 text-xl overflow-auto">
                 <h2 className="text-5xl italic">{title}</h2>
                 <div className="flex flex-row items-center gap-x-3 text-sm mt-5">
@@ -59,7 +64,9 @@ function SquareInfo() {
                         <button className="bg-black px-2 py-3 text-white w-1/3">PLACE BID</button>
                     </form>
                 </div>
-            </div> :
+            </div>
+            </div>
+            </> :
             null
         }
     </>

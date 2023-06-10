@@ -52,14 +52,10 @@ function Layer() {
                                     SHARE<FontAwesomeIcon icon={faShareSquare} />
                                 </button>
                     </div>
-                <div id="square-picture" className="w-full md:w-1/2 h-1/3 md:h-full bg-purple-500">
-
-                </div>
-                    <div id="square-info" className="flex flex-col w-full md:w-1/2 h-1/3 md:h-full bg-white text-black text-3xl pt-20 md:pt-24">
+                
                         <Routes>
                             <Route path="*" element={<SquareInfo />} />
                         </Routes>
-                    </div>
                 </div>
                 
             </div> 
