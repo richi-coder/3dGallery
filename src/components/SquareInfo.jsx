@@ -26,7 +26,14 @@ function SquareInfo() {
             data.length < 1 ? 
             null :
             squareToShow ?
-            squareToShow.description :
+            <div className="flex flex-col items-start gap-y-5 px-10 text-xl">
+                <h2 className="text-5xl">{squareToShow.alt_description}</h2>
+                <div className="flex flex-row items-center gap-x-3 text-sm">
+                    <h3>{squareToShow.user.first_name} {squareToShow.user.last_name}</h3>
+                    <span>@{squareToShow.user.instagram_username}</span>
+                </div>
+                <p className="text-lg">{squareToShow.description}</p>
+            </div> :
             null
         }
     </>

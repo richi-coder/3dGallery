@@ -56,23 +56,10 @@ function Layer() {
 
                 </div>
                     <div id="square-info" className="flex flex-col w-full md:w-2/3 bg-black text-white text-3xl pt-20 md:pt-24">
-                        
-                       
-                        <div>
-                            INFORMATION
-                            ON 
-                            THE 
-                            PHOTO !\
-                            <br />
-                            <br />
-                          
-                            <Routes>
-                                <Route path="*" element={<SquareInfo />} />
-                            </Routes>
-                        </div>
+                        <Routes>
+                            <Route path="*" element={<SquareInfo />} />
+                        </Routes>
                     </div>
-                    
-                    
                 </div>
                 
             </div> 
