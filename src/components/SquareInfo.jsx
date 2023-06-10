@@ -15,7 +15,9 @@ function SquareInfo() {
   return (
     <>
         {
-            data.length > 0 ? 
+            data.length < 1 ? 
+            null :
+            squareToShow ?
             squareToShow.description :
             null
         }

@@ -3,11 +3,12 @@ import { UseAppContext } from "../context/AppContext"
 import { faArrowAltCircleRight, faEnvelope, faShareFromSquare, faShareSquare } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward, faBoxOpen, faLeftLong, faLink, faShare, faShareAlt } from "@fortawesome/free-solid-svg-icons";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import SquareInfo from "./SquareInfo";
 
 function Layer() {
     const useAppContext = UseAppContext();
+    const navigate = useNavigate();
     const [layerClass, setLayerClass] = useState('-z-[60] hidden')
     const [innerLayer, setInnerLayer] = useState('-translate-x-full')
 
@@ -32,6 +33,7 @@ function Layer() {
     
     const closeButton = () => {
         useAppContext.updateState('layer', false)
+        navigate('/3dGallery/')
     }
 
   return (
