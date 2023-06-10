@@ -9,7 +9,15 @@ function SquareInfo() {
     const data = useAppContext.state.data;
     const filtering = data.filter(square => square.id === locationID);
     const squareToShow = filtering[filtering.length - 1];
-    console.log(squareToShow,'showing');
+    console.log(locationID);
+
+    useEffect(() => {
+      if (locationID !== '') {
+        setTimeout(() => {
+            useAppContext.updateState('layer', true)
+        }, 500);
+      }
+    }, [])
     
     
   return (
