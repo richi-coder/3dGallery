@@ -5,6 +5,10 @@ import { InteractionManager } from 'three.interactive';
 
 export function callThreeJS(useAppContext, howMany, navigation) {
 
+  let FOV;
+  if (window.innerWidth < 720) FOV = 130;
+  else FOV = 100;
+
   let fixedHeader = document.querySelector('#header');
   let fixedCanvas = document.querySelector('#three-canvas');
   let fixedLayer = document.querySelector('#layer');
@@ -23,7 +27,7 @@ let scrolling = false;
 let savedScroll = 0;
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(FOV, window.innerWidth / window.innerHeight, 0.1, 100);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight, false);
