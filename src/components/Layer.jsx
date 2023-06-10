@@ -3,13 +3,13 @@ import { UseAppContext } from "../context/AppContext"
 import { faArrowAltCircleRight, faEnvelope, faShareFromSquare, faShareSquare } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward, faBoxOpen, faLeftLong, faLink, faShare, faShareAlt } from "@fortawesome/free-solid-svg-icons";
+import { Route, Routes } from "react-router-dom";
+import SquareInfo from "./SquareInfo";
 
 function Layer() {
     const useAppContext = UseAppContext();
     const [layerClass, setLayerClass] = useState('-z-[60] hidden')
     const [innerLayer, setInnerLayer] = useState('-translate-x-full')
-    const data = useAppContext.state.data;
-    const index = useAppContext.state.currentSquare;
 
     useEffect(() => {
         if (useAppContext.state.layer) {
@@ -63,11 +63,10 @@ function Layer() {
                             PHOTO !\
                             <br />
                             <br />
-                            {
-                                data.length > 0 ? 
-                                data[index].description :
-                                null
-                            }
+                          
+                            <Routes>
+                                <Route path="*" element={<SquareInfo />} />
+                            </Routes>
                         </div>
                     </div>
                     

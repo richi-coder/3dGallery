@@ -3,7 +3,7 @@ import '../index.css'
 import * as THREE from 'three';
 import { InteractionManager } from 'three.interactive';
 
-export function callThreeJS(useAppContext, howMany) {
+export function callThreeJS(useAppContext, howMany, navigation) {
 
   let fixedHeader = document.querySelector('#header');
   let fixedCanvas = document.querySelector('#three-canvas');
@@ -93,10 +93,8 @@ array.forEach((item, indexPosition) => {
   interactionManager.add(square)
   square.addEventListener('click', (e) => {
     e.stopPropagation()
-    useAppContext.updateKeys({
-      'layer': true,
-      'currentSquare': indexPosition
-    })
+    useAppContext.updateState('layer', true);
+    navigation(`/3dGallery/${item.id}`)
   })
   square.addEventListener('mouseover', () => {
     document.body.style.cursor = 'pointer';

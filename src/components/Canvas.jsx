@@ -1,13 +1,21 @@
 import { useEffect } from "react"
 import { callThreeJS } from "../scripts/threeScripting"
 import { UseAppContext } from "../context/AppContext"
+import { useNavigate } from "react-router-dom";
 
 function Canvas() {
   const useAppContext = UseAppContext();
+  const navigate = useNavigate();
   const howMany = useAppContext.state.data.length;
+
+    const navigation = (route) => {
+      navigate(route)
+    }
+  
     useEffect(() => {
-        if (howMany != 0) callThreeJS(useAppContext, howMany)
+        if (howMany != 0) callThreeJS(useAppContext, howMany, navigation)
     }, [useAppContext.state.data])
+
     
 
   return (
