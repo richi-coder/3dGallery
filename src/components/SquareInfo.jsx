@@ -33,7 +33,7 @@ function SquareInfo() {
             squareToShow ?
             <>
             <div id="square-picture" className="w-full md:w-1/2 h-1/3 md:h-full bg-black">
-                <img src={squareToShow.urls.regular} alt={squareToShow.description} />
+                <img className="w-full h-full object-cover" src={squareToShow.urls.regular} alt={squareToShow.description} />
             </div>
             <div id="square-info" className="flex flex-col w-full md:w-1/2 h-2/3 md:h-full bg-white text-black text-3xl pt-10 md:pt-24">
             <div className="flex flex-col items-start px-10 text-xl overflow-auto">

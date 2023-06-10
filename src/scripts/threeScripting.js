@@ -78,8 +78,18 @@ const interactionManager = new InteractionManager(
 let squares = []
 let squarestStart = -1;
 array.forEach((item, indexPosition) => {
+  const aspect = item.width / item.height;
+  let planeWidth;
+  let planeHeight;
+  if (aspect >= 1) {
+    planeHeight = 1;
+    planeWidth = aspect;
+  } else {
+    planeWidth = 1;
+    planeHeight = 1 / aspect;
+  }
   let square = new THREE.Mesh(
-    new THREE.PlaneGeometry(1,1,1,1),
+    new THREE.PlaneGeometry(planeWidth,planeHeight,planeWidth,planeHeight),
     new THREE.MeshBasicMaterial(  {
       map: loader.load(item.urls.regular),
     }  )
