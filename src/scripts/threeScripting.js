@@ -41,7 +41,7 @@ let array = useAppContext.state.data;
 
 // Textures 
 const gridColor = 'rgb(255,174,66)';
-const groundColor = 'rgb(30,30,30)';
+const howLong = howMany*0.85;
 const loader = new THREE.TextureLoader();
 const backPlaneDimension = 5;
 const littleSquares = backPlaneDimension * 2;
@@ -51,19 +51,19 @@ const plane = new THREE.Mesh(
                           new THREE.MeshBasicMaterial(  { color: gridColor, wireframe: true } )
                           )
 const rightPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
+                          new THREE.PlaneGeometry(howLong,5,howLong*2,littleSquares),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const leftPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
+                          new THREE.PlaneGeometry(howLong,5,howLong*2,littleSquares),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const topPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
+                          new THREE.PlaneGeometry(howLong,5,howLong*2,littleSquares),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 const bottomPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
+                          new THREE.PlaneGeometry(howLong,5,howLong*2,littleSquares),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 
@@ -126,7 +126,7 @@ array.forEach((item, indexPosition) => {
 camera.position.set(0,0,0);
 camera.lookAt(plane.position);
 // First plane position
-plane.position.set(0,0,-howMany/2)
+plane.position.set(0,0,-howLong/2)
 // Right plane position
 rightPlane.position.set(2.5,0,0)
 rightPlane.rotation.y = -90*(2*3.14/360)
