@@ -12,6 +12,7 @@ export function callThreeJS(useAppContext, howMany, navigation) {
   let fixedHeader = document.querySelector('#header');
   let fixedCanvas = document.querySelector('#three-canvas');
   let fixedLayer = document.querySelector('#layer');
+  let fixedPresentation = document.querySelector('#presentation')
 // SMOOTHNESS
 
 let scrollbar = new Scrollbar.init(document.body, {
@@ -198,6 +199,7 @@ function squareChecker(zCamera) {
     fixedHeader.style.top = offset.y + 'px';
     fixedCanvas.style.top = offset.y + 'px';
     fixedLayer.style.top = offset.y + 'px';
+    fixedPresentation.style.top = offset.y + 'px';
 
     savedScroll = scrollPercent;
 })

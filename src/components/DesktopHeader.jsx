@@ -21,8 +21,8 @@ function DesktopHeader() {
         >
         <FontAwesomeIcon icon={faBars} />
       </button>
-      <div>
-        LOGO
+      <div className="logo text-xl md:text-2xl">
+        3dGallery
       </div>
       <button
           className='bg-white px-3 rounded-md h-full text-black sm:hover:bg-yellow-500 duration-200'

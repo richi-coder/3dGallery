@@ -44,7 +44,7 @@ function Layer() {
                                     className="float-left ms-5"
                                     onClick={closeButton}
                                     >
-                                    <FontAwesomeIcon icon={faLeftLong} /> GO BACK
+                                    <FontAwesomeIcon icon={faLeftLong} />&nbsp;&nbsp;GO BACK
                                 </button>
                                 <button
                                     className="float-right me-5"
