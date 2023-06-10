@@ -10,6 +10,9 @@ function SquareInfo() {
     const data = useAppContext.state.data;
     const filtering = data.filter(square => square.id === locationID);
     const squareToShow = filtering[filtering.length - 1];
+    const title = squareToShow != undefined ? squareToShow.alt_description.toUpperCase() : 'No title available';
+    const firstName = squareToShow && squareToShow.user && squareToShow.user.first_name ? squareToShow.user.first_name.toUpperCase() : ''
+    const lastName =  squareToShow && squareToShow.user && squareToShow.user.last_name ? squareToShow.user.last_name.toUpperCase() : ''
 
     useEffect(() => {
       if (locationID !== '') {
@@ -29,9 +32,9 @@ function SquareInfo() {
             null :
             squareToShow ?
             <div className="flex flex-col items-start px-10 text-xl overflow-auto">
-                <h2 className="text-5xl italic">{squareToShow.alt_description.toUpperCase()}</h2>
+                <h2 className="text-5xl italic">{title}</h2>
                 <div className="flex flex-row items-center gap-x-3 text-sm mt-5">
-                    <h3 className="border-b border-black">{squareToShow.user.first_name.toUpperCase()} {squareToShow.user.last_name.toUpperCase()}</h3>
+                    <h3 className="border-b border-black">{firstName} {lastName}</h3>
                     <span>@{squareToShow.user.instagram_username}</span>
                 </div>
                 <p className="text-lg mt-10">{squareToShow.description}</p>
@@ -49,7 +52,9 @@ function SquareInfo() {
                         <p className="text-gray-400">NO BIDDING HISTORY</p>
                     </div>
                     <br />
-                    <form className="flex flex-row w-full text-sm gap-x-5">
+                    <form
+                        onSubmit={(e) => {e.preventDefault(); alert('This is a demo by richiCoder!')}}
+                        className="flex flex-row w-full text-sm gap-x-5">
                         <input type="text" className="border px-2 py-3 w-2/3" placeholder={squareToShow.likes} />
                         <button className="bg-black px-2 py-3 text-white w-1/3">PLACE BID</button>
                     </form>
