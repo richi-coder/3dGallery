@@ -11,9 +11,11 @@ export function callThreeJS(useAppContext, howMany, navigation) {
 // SMOOTHNESS
 
 let scrollbar = new Scrollbar.init(document.body, {
-  renderByPixels: true
+  renderByPixels: true,
+  continuousScrolling: true
 })
 scrollbar.limit.x = 0;
+// Scrollbar.initAll()
 
 let scrollPercent = 0;
 let zCamera;
