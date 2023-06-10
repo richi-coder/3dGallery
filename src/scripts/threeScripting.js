@@ -37,25 +37,27 @@ let array = useAppContext.state.data;
 const gridColor = 'rgb(255,174,66)';
 const groundColor = 'rgb(30,30,30)';
 const loader = new THREE.TextureLoader();
+const backPlaneDimension = 5;
+const littleSquares = backPlaneDimension * 2;
 
 const plane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(5,5,5,5),
+                          new THREE.PlaneGeometry(backPlaneDimension,backPlaneDimension,littleSquares,littleSquares),
                           new THREE.MeshBasicMaterial(  { color: gridColor, wireframe: true } )
                           )
 const rightPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const leftPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
                           new THREE.MeshBasicMaterial({ color: gridColor, wireframe: true })
                           )
 const topPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 const bottomPlane = new THREE.Mesh(
-                          new THREE.PlaneGeometry(howMany,5,howMany,5),
+                          new THREE.PlaneGeometry(howMany,5,howMany*2,littleSquares),
                           new THREE.MeshBasicMaterial( { color: gridColor, wireframe: true } )
                           )
 
