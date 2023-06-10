@@ -14,8 +14,8 @@ function SquareInfo() {
     useEffect(() => {
       if (locationID !== '') {
         setTimeout(() => {
-            useAppContext.updateState('layer', true)
-        }, 500);
+            useAppContext.updateKeys({'layer': true})
+        }, 1000);
       }
     }, [])
     
