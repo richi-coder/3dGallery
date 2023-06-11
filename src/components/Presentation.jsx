@@ -5,11 +5,13 @@ function Presentation() {
     const useAppContext = UseAppContext();
     const [presentation, setPresentation] = useState('z-[100] block bg-black text-white')
     const [presentationContent, setPresentationContent] = useState('translate-y-[100%] opacity-0')
+    const [loader, setLoader] = useState('opacity-0')
 
     useEffect(() => {
         if(useAppContext.state.data.length == 0) {setTimeout(() => {
             setPresentationContent('translate-y-[0%] opacity-100')
             setTimeout(() => {
+                setLoader('opacity-100')
                 setPresentation('z-[100] block bg-yellow-500 text-black')
             }, 1500);
         }, 500); }
@@ -26,20 +28,22 @@ function Presentation() {
     }, [useAppContext.state.data[0]])
 
   return (
-    <div id="presentation" className={`fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-end transition-all duration-500 ${presentation} gap-y-10`}>
-        <div id="presentation-content" className={`flex flex-row items-center justify-center gap-x-10 text-xl md:text-3xl w-fit h-fit ${presentationContent} transition-all duration-1000 ease-in-out`}>
-            <div className="logo">
-            3dGallery
+    <div id="presentation" className={`fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-end transition-all duration-500 ${presentation} gap-y-[45vh]`}>
+        <div className="flex flex-col items-center gap-y-10">
+            <div id="presentation-content" className={`flex flex-row items-center justify-center gap-x-10 text-xl md:text-3xl w-fit h-fit ${presentationContent} transition-all duration-1000 ease-in-out`}>
+                <div className="logo">
+                3dGallery
+                </div>
+                <div>
+                    |
+                </div>
+                <h1 className="text-center p-0 m-0 richi-logo">
+                    richi<span className="text-gradient">Coder</span>
+                    </h1>
             </div>
-            <div>
-                |
-            </div>
-            <h1 className="text-center p-0 m-0 richi-logo">
-                richi<span className="text-gradient">Coder</span>
-                </h1>
+            <div className={`italic duration-1000 delay-500 ease-in-out ${presentationContent}`}>For <strong>Facundo Meire's</strong> requirement</div>
         </div>
-        <div className={`italic duration-1000 delay-500 ease-in-out ${presentationContent}`}>For <strong>Facundo Meire's</strong> requirement</div>
-        <span className="loaderPresentation absolute bottom-0 left-0 justify-self-end"></span>
+        <span className={`loaderPresentation justify-self-end duration-500 ${loader}`}></span>
     </div>
   )
 }
