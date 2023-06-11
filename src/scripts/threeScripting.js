@@ -26,9 +26,12 @@ let scrollbar = new Scrollbar.init(document.body, {
 // Limiting x scrolling
 scrollbar.limit.x = 0;
 
-setTimeout(() => {
-  scrollbar.scrollTo(0,5,10)
-}, 7000)
+// First scroll to start the app
+if(useAppContext.state.data.length > 0) {
+  setTimeout(() => {
+    scrollbar.scrollTo(0,5,10)
+  }, 7000);
+}
 
 let scrollPercent = 0;
 let zCamera;

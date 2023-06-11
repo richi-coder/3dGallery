@@ -14,7 +14,7 @@ function Canvas() {
   
     useEffect(() => {
         if (howMany != 0) callThreeJS(useAppContext, howMany, navigation)
-    }, [useAppContext.state.data])
+    }, [useAppContext.state.data[0]])
 
     
 
