@@ -8,10 +8,8 @@ import Presentation from './components/Presentation.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
   <AppContext>
       <Presentation />
       <App />
   </AppContext>
-  // </React.StrictMode>,
 )
