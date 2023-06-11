@@ -23,8 +23,14 @@ let scrollbar = new Scrollbar.init(document.body, {
   continuousScrolling: true,
   damping
 })
+// Limiting x scrolling
 scrollbar.limit.x = 0;
-// Scrollbar.initAll()
+
+
+
+setTimeout(() => {
+  scrollbar.scrollTo(0,5,10)
+}, 7000)
 
 let scrollPercent = 0;
 let zCamera;
