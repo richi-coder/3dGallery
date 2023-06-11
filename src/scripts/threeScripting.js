@@ -8,6 +8,9 @@ export function callThreeJS(useAppContext, howMany, navigation) {
   let FOV;
   if (window.innerWidth < 720) FOV = 130;
   else FOV = 100;
+  let damping;
+  if (window.innerWidth < 1000) damping = 0.05
+  else damping = 0.1
 
   let fixedHeader = document.querySelector('#header');
   let fixedCanvas = document.querySelector('#three-canvas');
@@ -17,7 +20,8 @@ export function callThreeJS(useAppContext, howMany, navigation) {
 
 let scrollbar = new Scrollbar.init(document.body, {
   renderByPixels: true,
-  continuousScrolling: true
+  continuousScrolling: true,
+  damping
 })
 scrollbar.limit.x = 0;
 // Scrollbar.initAll()
