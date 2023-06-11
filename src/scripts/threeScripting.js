@@ -26,8 +26,6 @@ let scrollbar = new Scrollbar.init(document.body, {
 // Limiting x scrolling
 scrollbar.limit.x = 0;
 
-
-
 setTimeout(() => {
   scrollbar.scrollTo(0,5,10)
 }, 7000)
