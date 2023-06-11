@@ -3,25 +3,31 @@ import { UseAppContext } from "../context/AppContext";
 
 function Presentation() {
     const useAppContext = UseAppContext();
-    const [presentation, setPresentation] = useState('z-[100] block')
-    const [presentationContent, setPresentationContent] = useState('opacity-0 translate-y-[100%]')
+    const [presentation, setPresentation] = useState('z-[100] block bg-black text-white')
+    const [presentationContent, setPresentationContent] = useState('translate-y-[100%] opacity-0')
 
     useEffect(() => {
-        setPresentationContent('translate-y-0 opacity-100 ')
+        if(useAppContext.state.data.length == 0) {setTimeout(() => {
+            setPresentationContent('translate-y-[0%] opacity-100')
+            setTimeout(() => {
+                setPresentation('z-[100] block bg-yellow-500 text-black')
+            }, 1500);
+        }, 500); }
         setTimeout(() => {
+
             if (useAppContext.state.data.length > 0) {
                 setPresentationContent('-translate-y-[200%] opacity-0')
                 setTimeout(() => {
-                    setPresentation('-z-[100] hidden')
-                }, 1000);
+                    setPresentation('-z-[100] hidden opacity-0')
+                }, 1500);
                 
             }
-        }, 2000);
+        }, 5000);
     }, [useAppContext.state.data[0]])
 
   return (
-    <div id="presentation" className={`fixed top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center ${presentation}`}>
-        <div id="presentation-content" className={`flex flex-row items-center justify-center gap-x-10 text-xl md:text-3xl w-fit h-fit ${presentationContent} transition-all duration-1000`}>
+    <div id="presentation" className={`fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-end transition-all duration-500 ${presentation} gap-y-10`}>
+        <div id="presentation-content" className={`flex flex-row items-center justify-center gap-x-10 text-xl md:text-3xl w-fit h-fit ${presentationContent} transition-all duration-1000 ease-in-out`}>
             <div className="logo">
             3dGallery
             </div>
@@ -32,6 +38,8 @@ function Presentation() {
                 richi<span className="text-gradient">Coder</span>
                 </h1>
         </div>
+        <div className={`italic duration-1000 delay-500 ease-in-out ${presentationContent}`}>For <strong>Facundo Meire's</strong> requirement</div>
+        <span className="loaderPresentation absolute bottom-0 left-0 justify-self-end"></span>
     </div>
   )
 }
