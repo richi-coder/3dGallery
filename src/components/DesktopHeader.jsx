@@ -14,7 +14,7 @@ function DesktopHeader() {
   }
 
   return (
-    <div className='w-full h-full flex flex-row items-center justify-between text-sm py-2 px-10'>
+    <div className='w-full h-full flex flex-row items-center justify-between py-2 px-3 md:px-10'>
       <button
         className="text-2xl"
         onClick={showMenu}
@@ -25,7 +25,7 @@ function DesktopHeader() {
         3dGallery
       </div>
       <button
-          className='bg-white px-3 rounded-md h-full text-black sm:hover:bg-yellow-500 duration-200'
+          className='bg-white px-2 md:px-3 rounded-md h-full text-black text-xs md:text-sm sm:hover:bg-yellow-500 duration-200'
           onClick={showConnectWallet}
           >
           CONNECT TO WALLET
