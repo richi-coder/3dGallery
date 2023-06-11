@@ -49,7 +49,7 @@ function Layer() {
                                 <button
                                     className="float-right me-5"
                                     >
-                                    SHARE<FontAwesomeIcon icon={faShareSquare} />
+                                    SHARE&nbsp;&nbsp;<FontAwesomeIcon icon={faShareSquare} />
                                 </button>
                     </div>
                 
