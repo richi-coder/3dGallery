@@ -24,8 +24,12 @@ function Menu() {
                 <hr className="w-[100%] border-gray-500" />
             </div>
             <div className="flex flex-row items-center justify-start gap-x-5 text-xs self-start">
-                <p>IN PARTNERSHIP WITH RICHICODER</p>
-                <div>LOGO</div>
+                <p>
+                    IN PARTNERSHIP WITH
+                </p>
+                <h1 className="text-center p-0 m-0 richi-logo">
+                    richi<span className="text-gradient">Coder</span>
+                </h1>
             </div>
     </div>
   )

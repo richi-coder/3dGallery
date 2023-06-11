@@ -39,7 +39,7 @@ function Presentation() {
                 </div>
                 <h1 className="text-center p-0 m-0 richi-logo">
                     richi<span className="text-gradient">Coder</span>
-                    </h1>
+                </h1>
             </div>
             <div className={`text-sm md:text-xl italic duration-1000 delay-500 ease-in-out ${presentationContent}`}>For <strong>Facundo Meire's</strong> requirement</div>
         </div>
