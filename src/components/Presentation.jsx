@@ -8,23 +8,26 @@ function Presentation() {
     const [loader, setLoader] = useState('opacity-0')
 
     useEffect(() => {
-        if(useAppContext.state.data.length == 0) {setTimeout(() => {
+        if(useAppContext.state.data.length == 0) {
+            setTimeout(() => {
             setPresentationContent('translate-y-[0%] opacity-100')
             setTimeout(() => {
                 setLoader('opacity-100')
                 setPresentation('z-[100] block bg-yellow-500 text-black')
             }, 1500);
-        }, 500); }
-        setTimeout(() => {
+            }, 500); 
+        }
+        
 
             if (useAppContext.state.data.length > 0) {
+                setTimeout(() => {
                 setPresentationContent('-translate-y-[200%] opacity-0')
                 setTimeout(() => {
                     setPresentation('-z-[100] hidden opacity-0')
                 }, 1500);
-                
-            }
-        }, 5000);
+            }, 5000);
+        }
+        
     }, [useAppContext.state.data[0]])
 
   return (
