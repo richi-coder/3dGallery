@@ -29,8 +29,8 @@ function Presentation() {
 
   return (
     <div id="presentation" className={`fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-end transition-all duration-500 ${presentation} gap-y-[45vh]`}>
-        <div className="flex flex-col items-center gap-y-5 md:gap-y-10">
-            <div id="presentation-content" className={`flex flex-row items-center justify-center gap-x-10 text-xl md:text-3xl w-fit h-fit ${presentationContent} transition-all duration-1000 ease-in-out`}>
+        <div className="flex flex-col items-center gap-y-5 md:gap-y-10 w-screen md:w-fit">
+            <div id="presentation-content" className={`flex flex-row items-center justify-center gap-x-[5vw] md:gap-x-10 text-xl md:text-3xl w-full md:w-fit h-fit ${presentationContent} transition-all duration-1000 ease-in-out`}>
                 <div className="logo">
                 3dGallery
                 </div>
