@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --animation-perspective: 200px;
   --accent: 124, 58, 237;
   --accent-gradient: linear-gradient(
     45deg,
@@ -96,10 +97,33 @@ body {
     transform: translateX(0%);
   }
 }
-    
+
+#logo-container {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
 
 .logo {
   font-family: 'Comfortaa', cursive;
+}
+
+#logo-header {
+  font-family: 'Comfortaa', cursive;
+  background: pink;
+  transform-origin: 50% 15px -15px;
+  animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+    0% {transform: perspective(var(--animation-perspective)) rotate3d(1,0,0,0deg);}
+    30% {transform: perspective(var(--animation-perspective)) rotate3d(1,0,0,0deg);}
+    40% {transform: perspective(var(--animation-perspective)) rotate3d(1,0,0,-90deg); opacity: 1;}
+    50% {opacity: 0;}
+    60% {transform: perspective(var(--animation-perspective)) rotate3d(1,0,0,-90deg); opacity: 1;}
+    70% {transform: perspective(var(--animation-perspective)) rotate3d(1,0,0,0deg);}
+    100% {transform: perspective(var(--animation-perspective)) rotate3d(1,0,0,0deg);}
+}
+#richi-header {
+  font-family: 'Orbitron', sans-serif;
 }
 
 .richi-logo {
