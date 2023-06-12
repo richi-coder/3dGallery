@@ -201,7 +201,7 @@ function squareChecker(zCamera) {
         ((scrollbar.offset.y) /
             (scrollbar.size.content.height -
                 document.documentElement.clientHeight)) * 100;
-    console.log(scrollPercent);
+    // console.log(scrollPercent);
     // Checking stopped scroll
     if (Math.abs(scrollPercent.toFixed(4) - savedScroll.toFixed(4)) <= 0.01) {
       scrolling = false;
