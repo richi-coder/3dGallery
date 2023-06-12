@@ -25,6 +25,9 @@ function DesktopHeader() {
         <div id="logo-header" className='logo absolute'>
           3dGallery
         </div>
+        <h1 id="richi-header" className="richi-logo absolute">
+                    richi<span className="text-gradient">Coder</span>
+        </h1>
       </div>
       <button
           className='bg-white px-2 md:px-3 rounded-md h-full text-black text-xs md:text-sm sm:hover:bg-yellow-500 duration-200'
