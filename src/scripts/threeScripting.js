@@ -16,6 +16,11 @@ export function callThreeJS(useAppContext, howMany, navigation) {
   let fixedCanvas = document.querySelector('#three-canvas');
   let fixedLayer = document.querySelector('#layer');
   let fixedPresentation = document.querySelector('#presentation')
+  let scrollPercent = 0;
+  let zCamera;
+  let scrolling = false;
+  let savedScroll = 0;
+
 // SMOOTHNESS
 
 let scrollbar = new Scrollbar.init(document.body, {
@@ -30,13 +35,12 @@ scrollbar.limit.x = 0;
 if(useAppContext.state.data.length > 0) {
   setTimeout(() => {
     scrollbar.scrollTo(0,5,10)
+    setTimeout(() => {
+      scrolling = false;
+    }, 1000);
   }, 7000);
 }
 
-let scrollPercent = 0;
-let zCamera;
-let scrolling = false;
-let savedScroll = 0;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(FOV, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -196,7 +200,7 @@ function squareChecker(zCamera) {
         ((scrollbar.offset.y) /
             (scrollbar.size.content.height -
                 document.documentElement.clientHeight)) * 100;
-    // console.log(scrollPercent);
+    console.log(scrollPercent);
     // Checking stopped scroll
     if (Math.abs(scrollPercent.toFixed(4) - savedScroll.toFixed(4)) <= 0.01) {
       scrolling = false;
