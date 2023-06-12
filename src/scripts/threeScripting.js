@@ -122,7 +122,7 @@ array.forEach((item, indexPosition) => {
   const zPosition = -1 * indexPosition/5 + squarestStart;
   
   square.position.set( xPosition, yPosition, zPosition )
-  squares.push({ ...square, ...{ initX: square.position.x, initY: square.position.y}});
+  squares.push({ ...square, ...{ initX: square.position.x, initY: square.position.y, initZ: square.position.z}});
   scene.add( square )
   interactionManager.add(square)
   square.addEventListener('click', (e) => {
@@ -136,6 +136,7 @@ array.forEach((item, indexPosition) => {
   square.addEventListener('mouseout', () => {
     document.body.style.cursor = 'default';
   })
+
 })
 
 // Camera Position
@@ -231,6 +232,5 @@ function onWindowResize() {
 function render() {
   renderer.render( scene, camera );
 }
-
 
 }
